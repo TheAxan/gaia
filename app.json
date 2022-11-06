@@ -3,6 +3,7 @@
     "name": "gaia",
     "slug": "gaia",
     "version": "1.0.0",
+    "owner": "theaxan",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
