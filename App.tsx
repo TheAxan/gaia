@@ -1,5 +1,6 @@
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, Text, View, StatusBar, TextInput, Button, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -101,11 +102,50 @@ const ProfileTab = () => {
   );
 };
 
-const SignInScreen = () => {
+const SignInScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [emailPlaceholder, setEmailPlaceholder] = useState("Email");
+  const [password, setPassword] = useState("");
+  const [passwordPlaceholder, setPasswordPlaceholder] = useState("Password");
+
   return (
-    <>
-      <Text>Sign in screen</Text>
-    </>
+    <View style={styles.loginContainer}>
+ 
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder={emailPlaceholder}
+          placeholderTextColor="#003f5c"
+          onChangeText={(email) => setEmail(email)}
+          onFocus={() => setEmailPlaceholder(' ')}
+          onBlur={() => {if (email == '') {setEmailPlaceholder('Email')}}}
+        />
+      </View>
+ 
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder={passwordPlaceholder}
+          placeholderTextColor="#003f5c"
+          secureTextEntry={true}
+          onChangeText={(password) => setPassword(password)}
+          onFocus={() => setPasswordPlaceholder(' ')}
+          onBlur={() => {if (password == '') {setPasswordPlaceholder('Password')}}}
+        />
+      </View>
+ 
+      <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
+        <Text style={styles.forgot_button}>Forgot Password?</Text>
+      </TouchableOpacity>
+      
+      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+        <Text style={styles.forgot_button}>Don't have an account yet?</Text>
+      </TouchableOpacity>
+ 
+      <TouchableOpacity style={styles.loginBtn}>
+        <Text>LOGIN</Text>
+      </TouchableOpacity>
+    </View>
   )
 }
 
@@ -139,17 +179,46 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'space-between',
   },
+
+  loginContainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  inputView: {
+    backgroundColor: "yellowgreen",
+    borderRadius: 30,
+    width: "70%",
+    height: 45,
+    margin: 10,
+  },
+  
+  TextInput: {
+    height: 50,
+    flex: 1,
+    padding: 10,
+  },
+  
+  forgot_button: {
+    height: 30,
+    margin: 10,
+  },
+  
+  loginBtn: {
+    width: "80%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10,
+    backgroundColor: "limegreen",
+  },
+
   form: {
     flex: 1,
     justifyContent: 'center',
-  },
-  box: {
-    width: 'auto',
-    height: 60,
-    backgroundColor: 'limegreen',
-    justifyContent: 'space-evenly',
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 });
 
