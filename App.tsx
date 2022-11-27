@@ -8,6 +8,7 @@ import { Feather } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+let isSignedOut = true;
 
 
 function App() {
@@ -17,8 +18,20 @@ function App() {
       <SafeAreaView style={[styles.container]}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name='HomePage' component={MainScreen}></Stack.Screen>
-            <Stack.Screen name='form' component={FormScreen}></Stack.Screen>
+            { 
+              isSignedOut ? (
+                <>
+                  <Stack.Screen name="SignIn" component={SignInScreen} />
+                  <Stack.Screen name="SignUp" component={SignUpScreen} />
+                  <Stack.Screen name="ResetPassword" component={ResetPassword} />
+                </>
+              ) : (
+                <>
+                  <Stack.Screen name='HomePage' component={MainScreen}></Stack.Screen>
+                  <Stack.Screen name='form' component={FormScreen}></Stack.Screen>
+                </>
+              )
+            }
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
@@ -88,6 +101,36 @@ const ProfileTab = () => {
   );
 };
 
+const SignInScreen = () => {
+  return (
+    <>
+      <Text>Sign in screen</Text>
+    </>
+  )
+}
+
+const SignUpScreen = () => {
+  return (
+    <>
+      <Text>Sign up screen</Text>
+    </>
+  )
+}
+
+const ResetPassword = () => {
+  return (
+    <>
+      <Text>password reset screen</Text>
+    </>
+  )
+}
+
+const blank = () => {
+  return (
+    <>
+    </>
+  )
+}
 
 const styles = StyleSheet.create({
   // alt colors: yellowgreen darkgreen green forestgreen
