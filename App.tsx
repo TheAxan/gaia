@@ -2,12 +2,32 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet, Text, View, StatusBar, TextInput, Button, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  // list navigation names here
+  SignIn: undefined,
+  SignUp: undefined,
+  ResetPassword: undefined,
+  HomePage: undefined,
+  form: undefined,
+  
+  Profile: { name: string };
+};
+
+type ProfileScreeningNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'SignIn'
+>;
+
+type Props = {
+  navigation: ProfileScreeningNavigationProp;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 let isSignedOut = true;
 
@@ -102,7 +122,7 @@ const ProfileTab = () => {
   );
 };
 
-const SignInScreen = ({ navigation }) => {
+const SignInScreen = ({ navigation }: Props) => {
   const [email, setEmail] = useState("");
   const [emailPlaceholder, setEmailPlaceholder] = useState("Email");
   const [password, setPassword] = useState("");
