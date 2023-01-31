@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
-import axios from 'axios';
+const axios = require('axios').default // import axios from 'axios';
 
 
 type RootStackParamList = {
@@ -32,18 +32,21 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 let isSignedOut = true;
 
+axios.defaults.baseURL = 'http://10.0.0.111:9001';
+
 function loginCall (username: string, password: string) {
-  axios.post(`http://10.0.0.111:9000/api-token-auth/`, { // make sure this is the same as the server
+  axios.post('/api-token-auth/', {
     username: username,
     password: password
   })
-  .then(function (response) {
+  .then(function (response: { data: { token: any; }; }) {
     console.log(response.data.token);
   })
-  .catch(function (error) {
+  .catch(function (error: any) {
     console.log(error);
   });
 };
+
 
 function App() {
   return (

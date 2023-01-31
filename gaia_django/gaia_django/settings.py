@@ -141,15 +141,4 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://10.0.0.111:19000',
-# ]
-
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    'http://10.0.0.111:19000',
-]
-
 ALLOWED_HOSTS = ['10.0.0.111']
