@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
+import axios from 'axios';
 
 
 type RootStackParamList = {
@@ -31,6 +32,18 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 let isSignedOut = true;
 
+function call () {
+  axios.post(`http://10.0.0.111:19000/api-token-auth/`, { //there's an issue with this
+    username: 'Bonnie',
+    password: 'idfkjust'
+  })
+  .then(function (response) {
+    console.log(response.data.token);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+};
 
 function App() {
   return (
@@ -162,7 +175,7 @@ const SignInScreen = ({ navigation }: Props) => {
         <Text style={styles.forgot_button}>Don't have an account yet?</Text>
       </TouchableOpacity>
  
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity style={styles.loginBtn} onPress={() => call()}>
         <Text>LOGIN</Text>
       </TouchableOpacity>
     </View>
