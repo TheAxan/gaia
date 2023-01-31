@@ -32,10 +32,10 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 let isSignedOut = true;
 
-function call () {
-  axios.post(`http://10.0.0.111:19000/api-token-auth/`, { //there's an issue with this
-    username: 'Bonnie',
-    password: 'idfkjust'
+function loginCall (username: string, password: string) {
+  axios.post(`http://10.0.0.111:9000/api-token-auth/`, { // make sure this is the same as the server
+    username: username,
+    password: password
   })
   .then(function (response) {
     console.log(response.data.token);
@@ -136,9 +136,9 @@ const ProfileTab = () => {
 };
 
 const SignInScreen = ({ navigation }: Props) => {
-  const [email, setEmail] = useState("");
-  const [emailPlaceholder, setEmailPlaceholder] = useState("Email");
-  const [password, setPassword] = useState("");
+  const [usernameInput, setUsername] = useState("");
+  const [usernamePlaceholder, setUsernamePlaceholder] = useState("Username");
+  const [passwordInput, setPassword] = useState("");
   const [passwordPlaceholder, setPasswordPlaceholder] = useState("Password");
 
   return (
@@ -147,11 +147,11 @@ const SignInScreen = ({ navigation }: Props) => {
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder={emailPlaceholder}
+          placeholder={usernamePlaceholder}
           placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
-          onFocus={() => setEmailPlaceholder(' ')}
-          onBlur={() => {if (email == '') {setEmailPlaceholder('Email')}}}
+          onChangeText={(username) => setUsername(username)}
+          onFocus={() => setUsernamePlaceholder(' ')}
+          onBlur={() => {if (usernameInput == '') {setUsernamePlaceholder('Username')}}}
         />
       </View>
  
@@ -163,7 +163,7 @@ const SignInScreen = ({ navigation }: Props) => {
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
           onFocus={() => setPasswordPlaceholder(' ')}
-          onBlur={() => {if (password == '') {setPasswordPlaceholder('Password')}}}
+          onBlur={() => {if (passwordInput == '') {setPasswordPlaceholder('Password')}}}
         />
       </View>
  
@@ -175,7 +175,8 @@ const SignInScreen = ({ navigation }: Props) => {
         <Text style={styles.forgot_button}>Don't have an account yet?</Text>
       </TouchableOpacity>
  
-      <TouchableOpacity style={styles.loginBtn} onPress={() => call()}>
+      <TouchableOpacity style={styles.loginBtn} 
+                        onPress={() => loginCall(usernameInput, passwordInput)}>
         <Text>LOGIN</Text>
       </TouchableOpacity>
     </View>
