@@ -1,57 +1,24 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet, Text, View, StatusBar, TextInput, Button, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
-const axios = require('axios').default // import axios from 'axios';
+import { RootStackParamList } from '@/types';
+import { SignInScreen } from './src/features/auth/index';
 
-
-type RootStackParamList = {
-  // list navigation names here
-  SignIn: undefined,
-  SignUp: undefined,
-  ResetPassword: undefined,
-  HomePage: undefined,
-  form: undefined,
-  
-  Profile: { name: string };
-};
-
-type ProfileScreeningNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'SignIn'
->;
-
-type Props = {
-  navigation: ProfileScreeningNavigationProp;
-};
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 let isSignedOut = true;
 
-axios.defaults.baseURL = 'http://10.0.0.111:9001';
-
-function loginCall (username: string, password: string) {
-  axios.post('/api-token-auth/', {
-    username: username,
-    password: password
-  })
-  .then(function (response: { data: { token: any; }; }) {
-    console.log(response.data.token);
-  })
-  .catch(function (error: any) {
-    console.log(error);
-  });
-};
-
 
 function App() {
   return (
     <>
-      <StatusBar barStyle = "light-content" hidden = {false} backgroundColor = "black" translucent = {true}/>
+      <StatusBar barStyle = "light-content" hidden = {false} 
+                 backgroundColor = "black" translucent = {true}
+      />
       <SafeAreaView style={[styles.container]}>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
@@ -137,54 +104,6 @@ const ProfileTab = () => {
     <Text>This is the ProfileTab</Text>
   );
 };
-
-const SignInScreen = ({ navigation }: Props) => {
-  const [usernameInput, setUsername] = useState("");
-  const [usernamePlaceholder, setUsernamePlaceholder] = useState("Username");
-  const [passwordInput, setPassword] = useState("");
-  const [passwordPlaceholder, setPasswordPlaceholder] = useState("Password");
-
-  return (
-    <View style={styles.loginContainer}>
- 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder={usernamePlaceholder}
-          placeholderTextColor="#003f5c"
-          onChangeText={(username) => setUsername(username)}
-          onFocus={() => setUsernamePlaceholder(' ')}
-          onBlur={() => {if (usernameInput == '') {setUsernamePlaceholder('Username')}}}
-        />
-      </View>
- 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder={passwordPlaceholder}
-          placeholderTextColor="#003f5c"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-          onFocus={() => setPasswordPlaceholder(' ')}
-          onBlur={() => {if (passwordInput == '') {setPasswordPlaceholder('Password')}}}
-        />
-      </View>
- 
-      <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
-      
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-        <Text style={styles.forgot_button}>Don't have an account yet?</Text>
-      </TouchableOpacity>
- 
-      <TouchableOpacity style={styles.loginBtn} 
-                        onPress={() => loginCall(usernameInput, passwordInput)}>
-        <Text>LOGIN</Text>
-      </TouchableOpacity>
-    </View>
-  )
-}
 
 const SignUpScreen = () => {
   return (
