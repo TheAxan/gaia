@@ -1,11 +1,13 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet, Text, View, StatusBar, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
-import { RootStackParamList } from '@/types';
-import { SignInScreen } from './src/features/auth/index';
+import { registerRootComponent } from 'expo';
+
+import { RootStackParamList } from '@customTypes/RootStackParamList';
+import { SignInScreen } from '@features/auth/components/SignInScreen';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -178,4 +180,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default registerRootComponent(App);

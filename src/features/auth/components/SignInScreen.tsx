@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
-import { Props } from '@/types';
-// import { loginCall } from '@/features/auth/api';
-import { loginCall } from '../api';
+
+import { Props } from 'src/customTypes/Props';
+import { loginCall } from "@features/auth/api/login";
 
 export const SignInScreen = ({ navigation }: Props) => {
   const [usernameInput, setUsername] = useState("");

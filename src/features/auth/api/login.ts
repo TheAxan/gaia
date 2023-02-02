@@ -1,7 +1,4 @@
-const axios = require('axios').default // import axios from 'axios';
-
-
-axios.defaults.baseURL = 'http://10.0.0.111:9001';
+import { axios } from "@lib/axios";
 
 export function loginCall (username: string, password: string) {
   axios.post('/api-token-auth/', {
