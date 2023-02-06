@@ -11,7 +11,8 @@ module.exports = function(api) {
             '@features': './src/features',
             '@config': './src/config',
             '@components': './src/components',
-            '@customTypes': './src/customTypes'
+            '@customTypes': './src/customTypes',
+            '@styles': './src/styles'
           },
         },
       ],

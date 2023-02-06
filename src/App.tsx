@@ -1,5 +1,5 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,6 +8,12 @@ import { registerRootComponent } from 'expo';
 
 import { RootStackParamList } from '@customTypes/RootStackParamList';
 import { SignInScreen } from '@features/auth/components/SignInScreen';
+import { SignUpScreen } from '@features/auth/components/SignUpScreen';
+import { ResetPassword } from '@features/auth/components/ResetPassword';
+import { FormScreen } from '@features/form/components/FormScreen';
+import { ScrollTab } from '@features/scroll/components/ScrollTab';
+import { SearchTab } from '@features/search/components/SearchTab';
+import { ProfileTab } from '@features/profile/components/ProfileTab';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -79,56 +85,6 @@ const MainScreen = () => {
       </Tab.Navigator>
   );
 };
-
-const FormScreen = () => {
-  return (
-    <View style={[styles.form]}>
-      <Text>This is the form screen</Text>
-    </View>
-  );
-};
-
-
-const ScrollTab = () => {
-  return (
-    <Text>This is the ScrollTab</Text>
-  );
-};
-
-const SearchTab = () => {
-  return (
-    <Text>This is the SearchTab</Text>
-  );
-};
-
-const ProfileTab = () => {
-  return (
-    <Text>This is the ProfileTab</Text>
-  );
-};
-
-const SignUpScreen = () => {
-  return (
-    <>
-      <Text>Sign up screen</Text>
-    </>
-  )
-}
-
-const ResetPassword = () => {
-  return (
-    <>
-      <Text>password reset screen</Text>
-    </>
-  )
-}
-
-const blank = () => {
-  return (
-    <>
-    </>
-  )
-}
 
 const styles = StyleSheet.create({
   // alt colors: yellowgreen darkgreen green forestgreen
