@@ -9,7 +9,7 @@
       "@config/*": ["./src/config/*"],
       "@components/*": ["./src/components/*"],
       "@customTypes/*": ["./src/customTypes/*"],
-      "@styles/*": ["./src/styles"]
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "extends": "expo/tsconfig.base",

@@ -1,5 +1,5 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,6 +14,7 @@ import { FormScreen } from '@features/form/components/FormScreen';
 import { ScrollTab } from '@features/scroll/components/ScrollTab';
 import { SearchTab } from '@features/search/components/SearchTab';
 import { ProfileTab } from '@features/profile/components/ProfileTab';
+import { styles } from '@styles/styles';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -86,54 +87,5 @@ const MainScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  // alt colors: yellowgreen darkgreen green forestgreen
-  container: {
-    flex: 1,
-    alignItems: 'stretch',
-    justifyContent: 'space-between',
-  },
-
-  loginContainer: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  inputView: {
-    backgroundColor: "yellowgreen",
-    borderRadius: 30,
-    width: "70%",
-    height: 45,
-    margin: 10,
-  },
-  
-  TextInput: {
-    height: 50,
-    flex: 1,
-    padding: 10,
-  },
-  
-  forgot_button: {
-    height: 30,
-    margin: 10,
-  },
-  
-  loginBtn: {
-    width: "80%",
-    borderRadius: 25,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 10,
-    backgroundColor: "limegreen",
-  },
-
-  form: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
 
 export default registerRootComponent(App);
