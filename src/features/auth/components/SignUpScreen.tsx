@@ -7,9 +7,7 @@ import { styles } from "@styles/styles";
 
 export const SignUpScreen = ({ navigation }: Props) => {
   const [usernameInput, setUsername] = useState("");
-  const [usernamePlaceholder, setUsernamePlaceholder] = useState("Username");
   const [passwordInput, setPassword] = useState("");
-  const [passwordPlaceholder, setPasswordPlaceholder] = useState("Password");
 
   return (
     <View style={styles.loginContainer}>
@@ -17,23 +15,19 @@ export const SignUpScreen = ({ navigation }: Props) => {
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder={usernamePlaceholder}
+          placeholder={'Username'}
           placeholderTextColor="#003f5c"
           onChangeText={(username) => setUsername(username)}
-          onFocus={() => setUsernamePlaceholder(' ')}
-          onBlur={() => {if (usernameInput == '') {setUsernamePlaceholder('Username')}}}
         />
       </View>
   
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder={passwordPlaceholder}
+          placeholder={'Password'}
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
-          onFocus={() => setPasswordPlaceholder(' ')}
-          onBlur={() => {if (passwordInput == '') {setPasswordPlaceholder('Password')}}}
         />
       </View>
       
