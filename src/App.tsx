@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import { registerRootComponent } from 'expo';
 
+import { useReducer, useEffect, useMemo } from 'react';
 import { RootStackParamList } from '@customTypes/RootStackParamList';
 import { SignInScreen } from '@features/auth/components/SignInScreen';
 import { SignUpScreen } from '@features/auth/components/SignUpScreen';
@@ -16,13 +17,55 @@ import { SearchTab } from '@features/search/components/SearchTab';
 import { ProfileTab } from '@features/profile/components/ProfileTab';
 import { styles } from '@styles/styles';
 
+import { AuthContext } from '@features/auth/contexts/authContext';
+import { loginCall } from "@features/auth/api/login";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
-let isSignedOut = true;
 
 
 function App() {
+  const [state, dispatch] = useReducer(
+    (prevState: any, action: { type: any; token: any; }) => {
+      switch (action.type) {
+        case 'SIGN_IN':
+          return {
+            ...prevState,
+            isSignout: false,
+            userToken: action.token,
+          };
+      }
+    },
+    {
+      isLoading: true,
+      isSignout: false,
+      userToken: null,
+    }
+  );
+  const authContext = useMemo(
+    () => ({
+      signIn: async (username: string, password: string) => {
+        // After getting token, we need to persist the token using `SecureStore`
+
+        let token;
+        try {
+          token = await loginCall(username, password);
+        } catch(error: any) {
+          if (error.response.data.non_field_errors 
+              == "Unable to log in with provided credentials."
+          ) {
+            alert('Unable to log in with provided credentials.')
+          } else {
+            console.log(error);
+          };
+        };
+        
+        dispatch({ type: 'SIGN_IN', token: token });
+      },
+    }),
+    []
+  );
+
   return (
     <>
       <StatusBar barStyle = "light-content" hidden = {false} 
@@ -30,22 +73,24 @@ function App() {
       />
       <SafeAreaView style={[styles.container]}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{headerShown: false}}>
-            { 
-              isSignedOut ? (
-                <>
-                  <Stack.Screen name="SignIn" component={SignInScreen} />
-                  <Stack.Screen name="SignUp" component={SignUpScreen} />
-                  <Stack.Screen name="ResetPassword" component={ResetPassword} />
-                </>
-              ) : (
-                <>
-                  <Stack.Screen name='HomePage' component={MainScreen}></Stack.Screen>
-                  <Stack.Screen name='form' component={FormScreen}></Stack.Screen>
-                </>
-              )
-            }
-          </Stack.Navigator>
+          <AuthContext.Provider value={authContext}>
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+              { 
+                state.userToken == null ? (
+                  <>
+                    <Stack.Screen name="SignIn" component={SignInScreen} />
+                    <Stack.Screen name="SignUp" component={SignUpScreen} />
+                    <Stack.Screen name="ResetPassword" component={ResetPassword} />
+                  </>
+                ) : (
+                  <>
+                    <Stack.Screen name='HomePage' component={MainScreen}></Stack.Screen>
+                    <Stack.Screen name='form' component={FormScreen}></Stack.Screen>
+                  </>
+                )
+              }
+            </Stack.Navigator>
+          </AuthContext.Provider>
         </NavigationContainer>
       </SafeAreaView>
     </>

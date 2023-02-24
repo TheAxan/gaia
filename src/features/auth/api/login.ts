@@ -1,7 +1,7 @@
 import { axios } from "@lib/axios";
 
 export function loginCall (username: string, password: string) {
-  axios.post('/api-token-auth/', {
+  return axios.post('/api-token-auth/', {
     username: username,
     password: password
   })
