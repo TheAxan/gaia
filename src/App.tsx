@@ -28,7 +28,7 @@ const Tab = createBottomTabNavigator();
 
 function App() {
   const [state, dispatch] = useReducer(
-    (prevState: any, action: { type: any; token: any; }) => {
+    (prevState: any, action: { type: string; token?: string | null }) => {
       switch (action.type) {
         case 'RESTORE_TOKEN':
           return {
@@ -60,7 +60,7 @@ function App() {
   useEffect(() => {
     // Fetch the token from storage then navigate to our appropriate place
     const bootstrapAsync = async () => {
-      let userToken;
+      let userToken = null;
 
       try {
         userToken = await getItemAsync('userToken');
@@ -84,20 +84,22 @@ function App() {
         // After getting token, we need to persist the token using `SecureStore`
 
         let token;
+
         try {
           token = await loginCall(username, password);
-        } catch(error: any) {
-          if (error.response.data.non_field_errors 
+        } catch(e: any) {
+          if (e.response.data.non_field_errors 
               == "Unable to log in with provided credentials."
           ) {
-            alert('Unable to log in with provided credentials.')
+            alert('Unable to log in with provided credentials.');
           } else {
-            console.log(error);
+            console.error(e);
           };
         };
-        
+
         dispatch({ type: 'SIGN_IN', token: token });
       },
+
       signOut: async () => {
         // we need to remove the token from 'SecureStore'
         dispatch({ type: 'SIGN_OUT' })
@@ -108,16 +110,15 @@ function App() {
         let token;
         try {
           token = await registerCall(username, password);
-        } catch(error: any) {
-          if (error.response.data.username
+        } catch(e: any) {
+          if (e.response.data.username
               == "A user with that username already exists."
           ) {
-            alert("A user with that username already exists.")
+            alert("A user with that username already exists.");
           } else {
-            console.log(error);
+            console.error(e);
           };
         };
-
         dispatch({ type: 'SIGN_IN', token: token });
       },
     }),

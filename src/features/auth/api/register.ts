@@ -7,10 +7,10 @@ export function registerCall (username: string, password: string) {
     password: password
   })
   .then(() => loginCall(username, password))
-  .catch((error) => {
-    if (error.response.data.username != "A user with that username already exists.") {
-      console.log(error);
+  .catch((e) => {
+    if (e.response.data.username != "A user with that username already exists.") {
+      console.error(e);
     };
-    throw error;
+    throw e;
   });
 };

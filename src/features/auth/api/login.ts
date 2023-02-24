@@ -6,10 +6,10 @@ export function loginCall (username: string, password: string) {
     password: password
   })
   .then((response) => response.data.token)
-  .catch((error) => {
-    if (error.response.data.non_field_errors != "Unable to log in with provided credentials.") {
-      console.log(error);
+  .catch((e) => {
+    if (e.response.data.non_field_errors != "Unable to log in with provided credentials.") {
+      console.error(e);
     };
-    throw error;
+    throw e;
   });
 };
