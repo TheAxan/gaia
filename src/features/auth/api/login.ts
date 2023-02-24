@@ -5,14 +5,11 @@ export function loginCall (username: string, password: string) {
     username: username,
     password: password
   })
-  .then(function (response: { data: { token: any; }; }) {
-    console.log(response.data.token);
-  })
-  .catch(function (error: any) {
-    if (error.response.data.non_field_errors == "Unable to log in with provided credentials.") {
-      console.log(error.response.data.non_field_errors)
-    } else {
+  .then((response) => response.data.token)
+  .catch((error) => {
+    if (error.response.data.non_field_errors != "Unable to log in with provided credentials.") {
       console.log(error);
     };
+    throw error;
   });
 };
