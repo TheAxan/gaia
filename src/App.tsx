@@ -7,7 +7,7 @@ import { Feather } from '@expo/vector-icons';
 import { registerRootComponent } from 'expo';
 
 import { useReducer, useEffect, useMemo } from 'react';
-import { getItemAsync } from 'expo-secure-store';
+import { getItemAsync, setItemAsync, deleteItemAsync } from 'expo-secure-store';
 
 import { RootStackParamList } from '@customTypes/RootStackParamList';
 import { SignInScreen } from '@features/auth/components/SignInScreen';
@@ -65,7 +65,7 @@ function App() {
       try {
         userToken = await getItemAsync('userToken');
       } catch (e) {
-        // Restoring token failed
+        console.error(e)
       }
 
       // After restoring token, we may need to validate it in production apps
@@ -81,12 +81,11 @@ function App() {
   const authContext = useMemo(
     () => ({
       signIn: async (username: string, password: string) => {
-        // After getting token, we need to persist the token using `SecureStore`
-
         let token;
 
         try {
           token = await loginCall(username, password);
+          await setItemAsync('userToken', token);
         } catch(e: any) {
           if (e.response.data.non_field_errors 
               == "Unable to log in with provided credentials."
@@ -101,15 +100,17 @@ function App() {
       },
 
       signOut: async () => {
-        // we need to remove the token from 'SecureStore'
-        dispatch({ type: 'SIGN_OUT' })
+        await deleteItemAsync('userToken')
+          .catch((e) => {console.log(e)});
+        dispatch({ type: 'SIGN_OUT' });
       },
-      signUp: async (username: string, password: string) => {
-        // After getting token, we need to persist the token using `SecureStore`
 
+      signUp: async (username: string, password: string) => {
         let token;
+
         try {
           token = await registerCall(username, password);
+          await setItemAsync('userToken', token);
         } catch(e: any) {
           if (e.response.data.username
               == "A user with that username already exists."
