@@ -87,12 +87,15 @@ function App() {
           token = await loginCall(username, password);
           await setItemAsync('userToken', token);
         } catch(e: any) {
-          if (e.response.data.non_field_errors 
-              == "Unable to log in with provided credentials."
-          ) {
+          if (!e.response) {
+            alert("Couldn't reach server");
+          } else if (e.response.data.non_field_errors 
+                     == "Unable to log in with provided credentials.") {
             alert('Unable to log in with provided credentials.');
+          } else if (e.response.data.password == "This field may not be blank.") {
+            alert('Password missing.');
           } else {
-            console.error(e);
+            console.log(e);
           };
         };
 
@@ -112,10 +115,13 @@ function App() {
           token = await registerCall(username, password);
           await setItemAsync('userToken', token);
         } catch(e: any) {
-          if (e.response.data.username
-              == "A user with that username already exists."
-          ) {
+          if (!e.response) {
+            alert("Couldn't reach server");
+          } else if (e.response.data.username
+                     == "A user with that username already exists.") {
             alert("A user with that username already exists.");
+          } else if (e.response.data.password == "This field may not be blank.") {
+            alert('Password missing.');
           } else {
             console.error(e);
           };

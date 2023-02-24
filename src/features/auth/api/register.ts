@@ -8,7 +8,7 @@ export function registerCall (username: string, password: string) {
   })
   .then(() => loginCall(username, password))
   .catch((e) => {
-    if (e.response.data.username != "A user with that username already exists.") {
+    if (e.response && e.response.status != 400) {
       console.error(e);
     };
     throw e;

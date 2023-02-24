@@ -7,7 +7,7 @@ export function loginCall (username: string, password: string) {
   })
   .then((response) => response.data.token)
   .catch((e) => {
-    if (e.response.data.non_field_errors != "Unable to log in with provided credentials.") {
+    if (e.response && e.response.status != 400) {
       console.error(e);
     };
     throw e;
