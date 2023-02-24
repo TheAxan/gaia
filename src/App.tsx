@@ -7,6 +7,8 @@ import { Feather } from '@expo/vector-icons';
 import { registerRootComponent } from 'expo';
 
 import { useReducer, useEffect, useMemo } from 'react';
+import { getItemAsync } from 'expo-secure-store';
+
 import { RootStackParamList } from '@customTypes/RootStackParamList';
 import { SignInScreen } from '@features/auth/components/SignInScreen';
 import { SignUpScreen } from '@features/auth/components/SignUpScreen';
@@ -28,6 +30,12 @@ function App() {
   const [state, dispatch] = useReducer(
     (prevState: any, action: { type: any; token: any; }) => {
       switch (action.type) {
+        case 'RESTORE_TOKEN':
+          return {
+            ...prevState,
+            userToken: action.token,
+            isLoading: false,
+          };
         case 'SIGN_IN':
           return {
             ...prevState,
@@ -48,6 +56,28 @@ function App() {
       userToken: null,
     }
   );
+
+  useEffect(() => {
+    // Fetch the token from storage then navigate to our appropriate place
+    const bootstrapAsync = async () => {
+      let userToken;
+
+      try {
+        userToken = await getItemAsync('userToken');
+      } catch (e) {
+        // Restoring token failed
+      }
+
+      // After restoring token, we may need to validate it in production apps
+
+      // This will switch to the App screen or Auth screen and this loading
+      // screen will be unmounted and thrown away.
+      dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+    };
+
+    bootstrapAsync();
+  }, []);
+
   const authContext = useMemo(
     () => ({
       signIn: async (username: string, password: string) => {
