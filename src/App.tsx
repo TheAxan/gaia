@@ -34,6 +34,12 @@ function App() {
             isSignout: false,
             userToken: action.token,
           };
+        case 'SIGN_OUT':
+          return {
+            ...prevState,
+            isSignout: true,
+            userToken: null,
+          };
       }
     },
     {
@@ -61,6 +67,10 @@ function App() {
         };
         
         dispatch({ type: 'SIGN_IN', token: token });
+      },
+      signOut: async () => {
+        // we need to remove the token from 'SecureStore'
+        dispatch({ type: 'SIGN_OUT' })
       },
       signUp: async (username: string, password: string) => {
         // After getting token, we need to persist the token using `SecureStore`
