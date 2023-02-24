@@ -16,9 +16,9 @@ import { ScrollTab } from '@features/scroll/components/ScrollTab';
 import { SearchTab } from '@features/search/components/SearchTab';
 import { ProfileTab } from '@features/profile/components/ProfileTab';
 import { styles } from '@styles/styles';
-
 import { AuthContext } from '@features/auth/contexts/authContext';
 import { loginCall } from "@features/auth/api/login";
+import { registerCall } from '@features/auth/api/register';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -60,6 +60,24 @@ function App() {
           };
         };
         
+        dispatch({ type: 'SIGN_IN', token: token });
+      },
+      signUp: async (username: string, password: string) => {
+        // After getting token, we need to persist the token using `SecureStore`
+
+        let token;
+        try {
+          token = await registerCall(username, password);
+        } catch(error: any) {
+          if (error.response.data.username
+              == "A user with that username already exists."
+          ) {
+            alert("A user with that username already exists.")
+          } else {
+            console.log(error);
+          };
+        };
+
         dispatch({ type: 'SIGN_IN', token: token });
       },
     }),

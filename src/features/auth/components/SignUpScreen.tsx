@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
 
 import { Props } from 'src/customTypes/Props';
-import { registerCall } from "@features/auth/api/register";
 import { styles } from "@styles/styles";
+import { AuthContext } from "@features/auth/contexts/authContext";
 
 export const SignUpScreen = ({ navigation }: Props) => {
   const [usernameInput, setUsername] = useState("");
   const [passwordInput, setPassword] = useState("");
+  const { signUp } = useContext(AuthContext);
 
   return (
     <View style={styles.loginContainer}>
@@ -36,7 +37,7 @@ export const SignUpScreen = ({ navigation }: Props) => {
       </TouchableOpacity>
   
       <TouchableOpacity style={styles.loginBtn} 
-                        onPress={() => registerCall(usernameInput, passwordInput)}
+                        onPress={() => signUp(usernameInput, passwordInput)}
       >
         <Text>REGISTER</Text>
       </TouchableOpacity>

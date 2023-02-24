@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
 
 import { Props } from 'src/customTypes/Props';
-import { loginCall } from "@features/auth/api/login";
 import { styles } from "@styles/styles";
 import { AuthContext } from "@features/auth/contexts/authContext";
 
