@@ -141,4 +141,4 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
 
-ALLOWED_HOSTS = ['10.0.0.111']
+ALLOWED_HOSTS = ['10.0.0.111', '10.0.0.88']
