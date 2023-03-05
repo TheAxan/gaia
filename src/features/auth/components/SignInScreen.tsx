@@ -34,11 +34,11 @@ export const SignInScreen = ({ navigation }: Props) => {
       </View>
  
       <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
+        <Text style={styles.text_button}>Forgot Password?</Text>
       </TouchableOpacity>
       
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-        <Text style={styles.forgot_button}>Don't have an account yet?</Text>
+        <Text style={styles.text_button}>Don't have an account yet?</Text>
       </TouchableOpacity>
  
       <TouchableOpacity style={styles.loginBtn} 

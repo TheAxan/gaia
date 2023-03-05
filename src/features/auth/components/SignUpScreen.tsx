@@ -33,7 +33,7 @@ export const SignUpScreen = ({ navigation }: Props) => {
       </View>
       
       <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-        <Text style={styles.forgot_button}>Already have an account?</Text>
+        <Text style={styles.text_button}>Already have an account?</Text>
       </TouchableOpacity>
   
       <TouchableOpacity style={styles.loginBtn} 

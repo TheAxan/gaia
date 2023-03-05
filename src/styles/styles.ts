@@ -29,8 +29,7 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   
-  forgot_button: {
-    height: 30,
+  text_button: {
     margin: 10,
   },
   
