@@ -9,12 +9,12 @@ import { deleteItemAsync } from 'expo-secure-store';
 import { RootStackParamList } from '@customTypes/RootStackParamList';
 import { SignInScreen } from '@features/auth/components/SignInScreen';
 import { SignUpScreen } from '@features/auth/components/SignUpScreen';
-import { ResetPassword } from '@features/auth/components/ResetPassword';
+import { PasswordResetScreen } from '@features/auth/components/PasswordResetScreen';
 import { FormScreen } from '@features/form/components/FormScreen';
 import { styles } from '@styles/styles';
 import { AuthContext } from '@features/auth/contexts/authContext';
 import { authReducer, authReducerInitialState } from '@features/auth/hooks/authReducer';
-import { MainScreen } from '@components/mainScreen';
+import { MainScreen } from '@components/MainScreen';
 import { signInHandler } from '@features/auth/utils/signInHandler';
 import { signUpHandler } from '@features/auth/utils/signUpHandler';
 import { restoreTokenHandler } from '@features/auth/utils/restoreTokenHandler';
@@ -67,11 +67,11 @@ function App() {
                   <>
                     <Stack.Screen name="SignIn" component={SignInScreen} />
                     <Stack.Screen name="SignUp" component={SignUpScreen} />
-                    <Stack.Screen name="ResetPassword" component={ResetPassword} />
+                    <Stack.Screen name="PasswordReset" component={PasswordResetScreen} />
                   </>
                 ) : (
                   <>
-                    <Stack.Screen name='HomePage' component={MainScreen}></Stack.Screen>
+                    <Stack.Screen name='Main' component={MainScreen}></Stack.Screen>
                     <Stack.Screen name='form' component={FormScreen}></Stack.Screen>
                   </>
                 )

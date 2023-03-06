@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     padding: 10
   },
   
-  text_button: {
+  textButton: {
     margin: 10,
   },
   
