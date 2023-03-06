@@ -109,7 +109,7 @@ function App() {
       <StatusBar barStyle = "light-content" hidden = {false} 
                  backgroundColor = "black" translucent = {true}
       />
-      <SafeAreaView style={[styles.container]}>
+      <SafeAreaView style={[styles.appContainer]}>
         <NavigationContainer>
           <AuthContext.Provider value={authContext}>
             <Stack.Navigator screenOptions={{headerShown: false}}>

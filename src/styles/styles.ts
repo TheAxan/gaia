@@ -2,38 +2,32 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   // alt colors: yellowgreen darkgreen green forestgreen
-  container: {
+  appContainer: {
     flex: 1,
     alignItems: 'stretch',
     justifyContent: 'space-between',
   },
 
-  loginContainer: {
+  centerContainer: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
 
-  inputView: {
+  pillInput: {
     backgroundColor: "yellowgreen",
     borderRadius: 30,
     width: "70%",
     height: 45,
     margin: 10,
-  },
-  
-  TextInput: {
-    height: 50,
-    flex: 1,
-    padding: 10,
+    padding: 10
   },
   
   text_button: {
     margin: 10,
   },
   
-  loginBtn: {
+  pillButton: {
     width: "80%",
     borderRadius: 25,
     height: 50,

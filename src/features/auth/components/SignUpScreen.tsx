@@ -11,20 +11,17 @@ export const SignUpScreen = ({ navigation }: Props) => {
   const { signUp } = useContext(AuthContext);
 
   return (
-    <View style={styles.loginContainer}>
-  
-      <View style={styles.inputView}>
+    <View style={styles.centerContainer}>
+      <View style={styles.pillInput}>
         <TextInput
-          style={styles.TextInput}
           placeholder={'Username'}
           placeholderTextColor="#003f5c"
           onChangeText={(username) => setUsername(username)}
         />
       </View>
   
-      <View style={styles.inputView}>
+      <View style={styles.pillInput}>
         <TextInput
-          style={styles.TextInput}
           placeholder={'Password'}
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
@@ -36,7 +33,7 @@ export const SignUpScreen = ({ navigation }: Props) => {
         <Text style={styles.text_button}>Already have an account?</Text>
       </TouchableOpacity>
   
-      <TouchableOpacity style={styles.loginBtn} 
+      <TouchableOpacity style={styles.pillButton} 
                         onPress={() => signUp(usernameInput, passwordInput)}
       >
         <Text>REGISTER</Text>
