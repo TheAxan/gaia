@@ -15,7 +15,6 @@ export const SignInScreen = ({ navigation }: Props) => {
       <View style={styles.pillInput}>
         <TextInput
           placeholder={'Username'}
-          placeholderTextColor="#003f5c"
           onChangeText={(username) => setUsername(username)}
         />
       </View>
@@ -23,7 +22,6 @@ export const SignInScreen = ({ navigation }: Props) => {
       <View style={styles.pillInput}>
         <TextInput
           placeholder={'Password'}
-          placeholderTextColor="#003f5c"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
@@ -37,8 +35,9 @@ export const SignInScreen = ({ navigation }: Props) => {
         <Text style={styles.text_button}>Don't have an account yet?</Text>
       </TouchableOpacity>
  
-      <TouchableOpacity style={styles.pillButton} 
-                        onPress={() => signIn(usernameInput, passwordInput)}
+      <TouchableOpacity
+        style={styles.pillButton} 
+        onPress={() => signIn(usernameInput, passwordInput)}
       >
         <Text>LOGIN</Text>
       </TouchableOpacity>

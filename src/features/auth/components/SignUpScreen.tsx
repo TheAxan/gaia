@@ -15,7 +15,6 @@ export const SignUpScreen = ({ navigation }: Props) => {
       <View style={styles.pillInput}>
         <TextInput
           placeholder={'Username'}
-          placeholderTextColor="#003f5c"
           onChangeText={(username) => setUsername(username)}
         />
       </View>
@@ -23,7 +22,6 @@ export const SignUpScreen = ({ navigation }: Props) => {
       <View style={styles.pillInput}>
         <TextInput
           placeholder={'Password'}
-          placeholderTextColor="#003f5c"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
@@ -33,8 +31,9 @@ export const SignUpScreen = ({ navigation }: Props) => {
         <Text style={styles.text_button}>Already have an account?</Text>
       </TouchableOpacity>
   
-      <TouchableOpacity style={styles.pillButton} 
-                        onPress={() => signUp(usernameInput, passwordInput)}
+      <TouchableOpacity 
+        style={styles.pillButton} 
+        onPress={() => signUp(usernameInput, passwordInput)}
       >
         <Text>REGISTER</Text>
       </TouchableOpacity>
