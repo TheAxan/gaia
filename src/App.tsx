@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import { registerRootComponent } from 'expo';
-
 import { useReducer, useEffect, useMemo } from 'react';
 import { getItemAsync, setItemAsync, deleteItemAsync } from 'expo-secure-store';
 
@@ -21,41 +20,14 @@ import { styles } from '@styles/styles';
 import { AuthContext } from '@features/auth/contexts/authContext';
 import { loginCall } from "@features/auth/api/login";
 import { registerCall } from '@features/auth/api/register';
+import { authReducer, authReducerInitialState } from '@features/auth/hooks/authReducer';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 
 function App() {
-  const [state, dispatch] = useReducer(
-    (prevState: any, action: { type: string; token?: string | null }) => {
-      switch (action.type) {
-        case 'RESTORE_TOKEN':
-          return {
-            ...prevState,
-            userToken: action.token,
-            isLoading: false,
-          };
-        case 'SIGN_IN':
-          return {
-            ...prevState,
-            isSignout: false,
-            userToken: action.token,
-          };
-        case 'SIGN_OUT':
-          return {
-            ...prevState,
-            isSignout: true,
-            userToken: null,
-          };
-      }
-    },
-    {
-      isLoading: true,
-      isSignout: false,
-      userToken: null,
-    }
-  );
+  const [state, dispatch] = useReducer(authReducer, authReducerInitialState);
 
   useEffect(() => {
     // Fetch the token from storage then navigate to our appropriate place
