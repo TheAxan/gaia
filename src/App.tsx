@@ -2,8 +2,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Feather } from '@expo/vector-icons';
 import { registerRootComponent } from 'expo';
 import { useReducer, useEffect, useMemo } from 'react';
 import { getItemAsync, setItemAsync, deleteItemAsync } from 'expo-secure-store';
@@ -13,17 +11,14 @@ import { SignInScreen } from '@features/auth/components/SignInScreen';
 import { SignUpScreen } from '@features/auth/components/SignUpScreen';
 import { ResetPassword } from '@features/auth/components/ResetPassword';
 import { FormScreen } from '@features/form/components/FormScreen';
-import { ScrollTab } from '@features/scroll/components/ScrollTab';
-import { SearchTab } from '@features/search/components/SearchTab';
-import { ProfileTab } from '@features/profile/components/ProfileTab';
 import { styles } from '@styles/styles';
 import { AuthContext } from '@features/auth/contexts/authContext';
 import { loginCall } from "@features/auth/api/login";
 import { registerCall } from '@features/auth/api/register';
 import { authReducer, authReducerInitialState } from '@features/auth/hooks/authReducer';
+import { MainScreen } from '@components/mainScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-const Tab = createBottomTabNavigator();
 
 
 function App() {
@@ -134,41 +129,5 @@ function App() {
     </>
   );
 };
-
-
-const MainScreen = () => {
-  return (
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === 'Home') {
-              iconName = "users";
-            } else if (route.name === 'Search') {
-              iconName = "search";
-            } else if (route.name === 'Profile') {
-              iconName = "user";
-            }
-
-            return <Feather name={iconName as any} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: 'white',
-          tabBarInactiveTintColor: 'white',
-          tabBarActiveBackgroundColor: 'limegreen',
-          tabBarInactiveBackgroundColor: 'limegreen',
-          tabBarShowLabel: false,
-
-          headerStyle: {backgroundColor: 'limegreen',},
-          headerTintColor: 'white'
-        })}
-      >
-        <Tab.Screen name='Home' component={ScrollTab}></Tab.Screen>
-        <Tab.Screen name='Search' component={SearchTab}></Tab.Screen>
-        <Tab.Screen name='Profile' component={ProfileTab}></Tab.Screen>
-      </Tab.Navigator>
-  );
-};
-
 
 export default registerRootComponent(App);
