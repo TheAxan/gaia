@@ -26,20 +26,14 @@ function App() {
 
   const authContext = useMemo(() => ({
     signIn: async (username: string, password: string) => {
-      dispatch({
-        type: 'SIGN_IN',
-        token: await signInHandler(username, password) 
-      });
+      dispatch({type: 'SIGN_IN', token: await signInHandler(username, password)});
     },
     signOut: async () => {
       await signOutHandler();
       dispatch({ type: 'SIGN_OUT' });
     },
     signUp: async (username: string, password: string) => {
-      dispatch({
-        type: 'SIGN_IN',
-        token: await signUpHandler(username, password)
-      });
+      dispatch({type: 'SIGN_IN', token: await signUpHandler(username, password)});
     },
   }), []);
 
