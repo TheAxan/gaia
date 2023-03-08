@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { styles } from "@styles/styles";
 
 
 export const FormScreen = () => {
@@ -8,10 +9,3 @@ export const FormScreen = () => {
     </View>
   );
 };
-  
-const styles = StyleSheet.create({
-  form: {
-    flex: 1,
-    justifyContent: 'center',
-    },
-  });

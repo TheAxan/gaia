@@ -10,7 +10,7 @@ export const ProfileTab = () => {
   return (
     <>
       <Text>This is the ProfileTab</Text>
-      <TouchableOpacity style={styles.forgot_button} onPress={() => signOut()}                          >
+      <TouchableOpacity style={styles.textButton} onPress={() => signOut()}>
         <Text>Sign out</Text>
       </TouchableOpacity>
     </>
