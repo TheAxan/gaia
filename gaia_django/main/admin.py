@@ -15,5 +15,5 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Question, QuestionAdmin)
 
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('user', 'question', 'answer_date', 'latest_answer', 'answer_json')
+    list_display = ('user', 'question', 'answer_date', 'answer_json')
 admin.site.register(Answer, AnswerAdmin)

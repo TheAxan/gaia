@@ -17,5 +17,4 @@ class Answer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer_date = models.DateTimeField(auto_now_add=True)
-    latest_answer = models.BooleanField()
     answer_json = models.JSONField()
