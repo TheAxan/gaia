@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from main.models import User, Question
+from main.models import User, Question, Answer
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -11,3 +11,8 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ['prompt_fr', 'prompt_en', 'prompt_hint_fr', 'prompt_hint_en', 'prerequisite']
+
+class AnswerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Answer
+        fields = ['question', 'answer_json']

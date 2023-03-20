@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework import status
 
-from main.serializers import UserSerializer, QuestionSerializer
+from main.serializers import UserSerializer, QuestionSerializer, AnswerSerializer
 from main.models import User, Question
 
 
@@ -27,3 +27,8 @@ class QuestionDetail(generics.RetrieveAPIView):
 class QuestionList(generics.ListAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
+
+class AnswerView(generics.CreateAPIView):
+    serializer_class = AnswerSerializer
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
