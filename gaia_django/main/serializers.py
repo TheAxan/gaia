@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = ['prompt_fr', 'prompt_en', 'prompt_hint_fr', 'prompt_hint_en', 'prerequisite']
+        fields = ['prompt_fr', 'prompt_en', 'hint_fr', 'hint_en']
 
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:

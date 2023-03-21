@@ -7,7 +7,7 @@ from django.forms import TextInput, Textarea
 admin.site.register(User, UserAdmin)
 
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('description', 'id', 'prompt_fr')
+    list_display = ('description', 'id', 'prompt_fr', 'prerequisite', 'parent')
     save_as = True
     formfield_overrides = { 
         models.CharField : {'widget': TextInput(attrs={'size':'85'})},
