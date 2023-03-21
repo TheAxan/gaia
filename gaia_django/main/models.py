@@ -23,6 +23,16 @@ class Question(models.Model):
         blank=True,
         null=True
     )
+    type = models.CharField(
+        max_length=50,
+        choices=[
+            ('binary', 'binary'),
+            ('binary_multiple', 'binary_multiple'),
+            ('number', 'number'),
+            ('number_multiple', 'number_multiple'),
+            ('multiple', 'multiple')
+        ]
+    )
 
 class Answer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -38,6 +38,6 @@ export const ScrollTab = () => {
 
   return <FlatList
     data={questions}
-    renderItem={({item}) => <Item prompt={item['prompt_fr']} hint={item['prompt_hint_fr']} />}
+    renderItem={({item}) => <Item prompt={item['prompt_fr']} hint={item['hint_fr']} />}
   />
 };
