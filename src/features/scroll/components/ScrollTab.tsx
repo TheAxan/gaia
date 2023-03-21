@@ -1,4 +1,4 @@
-import { Text, View, FlatList, TextInput } from "react-native";
+import { Text, View, FlatList, TextInput, TouchableOpacity } from "react-native";
 import { useEffect, useState } from "react";
 import { styles } from "@styles/styles";
 import { fetchQuestions } from "@features/scroll/api/questions"
@@ -11,12 +11,17 @@ const Item = ({prompt, hint}: ItemProps) => {
   return <View style={styles.item}>
     <Text style={styles.question}>{prompt}</Text>
     <Text style={styles.hint}>{hint}</Text>
-    <View style={styles.boxInput}>
-      <TextInput
-        placeholder={''}
-        textAlign='center'
-        onChangeText={(field) => setField(field)}
-      />
+    <View style={styles.row}>
+      <View style={styles.boxInput}>
+        <TextInput
+          placeholder={''}
+          textAlign='center'
+          onChangeText={(field) => setField(field)}
+        />
+      </View>
+      <TouchableOpacity onPress={() => ''} style={styles.squareButton}>
+        <Text style={styles.white}>SAVE</Text>
+      </TouchableOpacity>
     </View>
   </View>
 };

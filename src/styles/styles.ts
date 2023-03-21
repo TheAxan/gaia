@@ -57,7 +57,7 @@ export const styles = StyleSheet.create({
   boxInput: {
     backgroundColor: 'whitesmoke',
     borderRadius: 10,
-    borderColor: 'grey',
+    borderColor: 'limegreen',
     borderWidth: 1,
     margin: 8,
     padding: 2,
@@ -72,5 +72,27 @@ export const styles = StyleSheet.create({
 
   question: {
     textAlign: "justify",
+    color: 'limegreen',
+  },
+
+  row: {
+    flexDirection: 'row',
+    justifyContent: "space-between",
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    flex: 1,
+  },
+
+  squareButton: {
+    backgroundColor: 'limegreen',
+    borderRadius: 10,
+    justifyContent: 'center',
+    padding: 10,
+    height: 40,
+  },
+
+  white: {
+    color: 'whitesmoke',
+    fontSize: 16,
   },
 });
