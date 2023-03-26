@@ -75,11 +75,16 @@ export const styles = StyleSheet.create({
     color: 'limegreen',
   },
 
-  numberInput: {
+  numberField: {
     flexDirection: 'row',
     justifyContent: "space-between",
     alignItems: 'center',
     alignSelf: 'stretch',
+  },
+
+  numberInput: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
 
   squareButton: {
