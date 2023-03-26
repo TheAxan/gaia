@@ -5,7 +5,6 @@ import { RootStackParamList } from '@customTypes/RootStackParamList';
 import { SignInScreen } from '@features/auth/components/SignInScreen';
 import { SignUpScreen } from '@features/auth/components/SignUpScreen';
 import { PasswordResetScreen } from '@features/auth/components/PasswordResetScreen';
-import { FormScreen } from '@features/form/components/FormScreen';
 import { MainScreen } from '@components/MainScreen';
 
 
@@ -24,7 +23,6 @@ export const StackNavigator = (props: {userToken: string}) => {
         ) : (
           <>
             <Stack.Screen name='Main' component={MainScreen}></Stack.Screen>
-            <Stack.Screen name='form' component={FormScreen}></Stack.Screen>
           </>
         )
       }
