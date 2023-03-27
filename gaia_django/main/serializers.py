@@ -8,9 +8,11 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['username', 'password']
 
 class QuestionSerializer(serializers.ModelSerializer):
+    children = serializers.PrimaryKeyRelatedField(many=True, queryset=Question.objects.all())
+
     class Meta:
         model = Question
-        fields = ['prompt_fr', 'prompt_en', 'hint_fr', 'hint_en', 'type']
+        fields = ['prompt_fr', 'prompt_en', 'hint_fr', 'hint_en', 'question_type', 'children']
 
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:

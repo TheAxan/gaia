@@ -121,4 +121,12 @@ export const styles = StyleSheet.create({
     alignSelf: 'stretch',
     margin: 8,
   },
+
+  subQuestions: {
+    flexDirection: 'row'
+  },
+
+  minusPlusButton: {
+    flexDirection: 'row'
+  },
 });

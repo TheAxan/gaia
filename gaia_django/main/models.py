@@ -23,7 +23,7 @@ class Question(models.Model):
         blank=True,
         null=True
     )
-    type = models.CharField(
+    question_type = models.CharField(
         max_length=50,
         choices=[
             ('binary', 'binary'),

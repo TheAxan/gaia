@@ -17,7 +17,10 @@ export const ScrollTab = () => {
   return <FlatList
     data={questions}
     renderItem={({item}) => <FormItem 
-      prompt={item['prompt_fr']} hint={item['hint_fr']} type={item['type']}
+      prompt={item['prompt_fr']} 
+      hint={item['hint_fr']} 
+      questionType={item['question_type']}
+      children={item['children']}
     />}
   />
 };
