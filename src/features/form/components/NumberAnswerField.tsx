@@ -16,7 +16,9 @@ export const NumberAnswerField = () => {
               placeholder={''}
               value={field}
               textAlign='center'
+              keyboardType='numeric'
               onChangeText={(textChange) => setField(textChange)}
+              // commas and dots mess stuff up
             />
           </View>
           <TouchableOpacity 
