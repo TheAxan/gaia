@@ -1,7 +1,8 @@
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { Feather } from '@expo/vector-icons';
 import { styles } from "@styles/styles";
+import { FullSquareButton } from "@features/form/components/FullSquareButton";
 
 
 export const NumberAnswerField = () => {
@@ -25,17 +26,15 @@ export const NumberAnswerField = () => {
               };
             }}
           >
-            <Feather name="minus" size={20} color={parseInt(field) > 0 ? 'limegreen' : 'grey'}/>
+            <Feather name="minus" size={30} color={parseInt(field) > 0 ? 'limegreen' : 'grey'}/>
           </TouchableOpacity>
           <TouchableOpacity 
             onPress={() => setField((parseInt(field)+1).toString())}
           >
-            <Feather name="plus" size={20} color={'limegreen'}/>
+            <Feather name="plus" size={30} color={'limegreen'}/>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={() => ''} style={styles.squareButton}>
-          <Text style={styles.white}>SAVE</Text>
-        </TouchableOpacity>
+        <FullSquareButton onPress={() => ''} text={'SAVE'}/>
       </View>
     );
   };

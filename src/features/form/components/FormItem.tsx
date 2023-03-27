@@ -2,6 +2,7 @@ import { Text, View } from "react-native";
 import { styles } from '@styles/styles'
 
 import { NumberAnswerField } from "@features/form/components/NumberAnswerField";
+import { BinaryAnswerField } from "@features/form/components/BinaryAnswerField";
 
 
 type ItemProps = {prompt: string, hint: string, type: string};
@@ -11,6 +12,8 @@ const AnswerField = (type: AnswerFieldProps) => {
   switch (type.type) {
     case 'number':
       return <NumberAnswerField/>
+    case 'binary':
+      return <BinaryAnswerField/>
     default:
       return <Text>Unhandled question type</Text>
   };

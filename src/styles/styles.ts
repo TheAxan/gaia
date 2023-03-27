@@ -87,16 +87,38 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
 
-  squareButton: {
+  emptySquareButton: {
+    backgroundColor: 'whitesmoke',
+    borderRadius: 10,
+    borderColor: 'limegreen',
+    borderWidth: 1,
+    padding: 10,
+    height: 40,
+    
+  },
+
+  fullSquareButton: {
     backgroundColor: 'limegreen',
     borderRadius: 10,
-    justifyContent: 'center',
     padding: 10,
     height: 40,
   },
 
-  white: {
+  whitePrompt: {
     color: 'whitesmoke',
     fontSize: 16,
+  },
+
+  limegreenPrompt: {
+    color: 'limegreen',
+    fontSize: 16,
+  },
+
+  binaryField: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    margin: 8,
   },
 });

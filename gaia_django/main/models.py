@@ -35,7 +35,7 @@ class Question(models.Model):
     )
 
     def __str__(self):
-        return f'({self._id}) {self.description}'
+        return f'({self.id}) {self.description}'
 
 class Answer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
