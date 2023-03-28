@@ -3,7 +3,7 @@ import { Feather } from '@expo/vector-icons';
 import { styles } from "@styles/styles";
 
 export const MinusPlusButtons = ({target, setTarget}: any) => (
-  <View style={styles.minusPlusButton}>
+  <View style={styles.flexRow}>
     <TouchableOpacity 
       onPress={() => {
         if (parseInt(target) > 0) {

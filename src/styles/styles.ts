@@ -38,11 +38,6 @@ export const styles = StyleSheet.create({
     backgroundColor: "limegreen",
   },
 
-  form: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-
   item: {
     backgroundColor: 'lightgrey',
     padding: 8,
@@ -54,7 +49,7 @@ export const styles = StyleSheet.create({
     
   },
   
-  boxInput: {
+  numberInput: {
     backgroundColor: 'whitesmoke',
     borderRadius: 10,
     borderColor: 'limegreen',
@@ -82,7 +77,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
 
-  numberInput: {
+  centerRow: {
     flexDirection: 'row',
     alignItems: 'center'
   },
@@ -122,11 +117,7 @@ export const styles = StyleSheet.create({
     margin: 8,
   },
 
-  subQuestions: {
-    flexDirection: 'row'
-  },
-
-  minusPlusButton: {
-    flexDirection: 'row'
+  flexRow: {
+    flexDirection: 'row',
   },
 });

@@ -1,8 +1,9 @@
-import { View, TextInput, TouchableOpacity } from "react-native";
+import { View, TextInput } from "react-native";
 import { useState } from "react";
-import { Feather } from '@expo/vector-icons';
 import { styles } from "@styles/styles";
 import { FullSquareButton } from "@features/form/components/FullSquareButton";
+import { MinusPlusButtons } from "@features/form/components//MinusPlusButtons";
+import { NumberInput } from "@features/form/components//NumberInput";
 
 
 export const NumberAnswerField = () => {
@@ -10,31 +11,9 @@ export const NumberAnswerField = () => {
     
     return (
       <View style={styles.numberField}>
-        <View style={styles.numberInput}>
-          <View style={styles.boxInput}>
-            <TextInput
-              placeholder={''}
-              value={field}
-              textAlign='center'
-              keyboardType='numeric'
-              onChangeText={(textChange) => setField(textChange)}
-              // commas and dots mess stuff up
-            />
-          </View>
-          <TouchableOpacity 
-            onPress={() => {
-              if (parseInt(field) > 0) {
-                setField((parseInt(field)-1).toString())
-              };
-            }}
-          >
-            <Feather name="minus" size={30} color={parseInt(field) > 0 ? 'limegreen' : 'grey'}/>
-          </TouchableOpacity>
-          <TouchableOpacity 
-            onPress={() => setField((parseInt(field)+1).toString())}
-          >
-            <Feather name="plus" size={30} color={'limegreen'}/>
-          </TouchableOpacity>
+        <View style={styles.centerRow}>
+          <NumberInput field={field} setField={setField}/>
+          <MinusPlusButtons target={field} setTarget={setField}/>
         </View>
         <FullSquareButton onPress={() => ''} text={'SAVE'}/>
       </View>

@@ -1,36 +1,13 @@
 import { useEffect, useState } from "react";
-import { FlatList, Text, View, TextInput, TouchableOpacity } from "react-native";
-import { Feather } from '@expo/vector-icons';
+import { FlatList, Text, View } from "react-native";
 
 import { fetchQuestion } from "@features/form/api/question";
 import { styles } from "@styles/styles";
-import { MinusPlusButtons } from "@features/form/components/MinusPlusButtons";
-
-const NumberMultipleField = () => {
-  const [field, setField] = useState('0');
-    
-  return (
-    <View style={styles.numberField}>
-      <View style={styles.numberInput}>
-        <MinusPlusButtons target={field} setTarget={setField}/>
-        <View style={styles.boxInput}>
-          <TextInput
-            placeholder={''}
-            value={field}
-            textAlign='center'
-            keyboardType='numeric'
-            onChangeText={(textChange) => setField(textChange)}
-            // commas and dots mess stuff up
-          />
-        </View>
-      </View>
-    </View>
-  );
-};
+import { NumberMultipleField } from "@features/form/components/NumberMultipleField";
 
 
 const SubQuestions = ({prompt, hint, questionType}: any) => (
-  <View style={styles.subQuestions}>
+  <View style={styles.flexRow}>
     <SubAnswerField questionType={questionType}/>
     <Text>{prompt}</Text>
   </View>
@@ -46,7 +23,7 @@ const SubAnswerField = ({prompt, hint, questionType}: any) => {
 };
 
 export const MultipleAnswerField = ({childrenIds}: any) => {
-  let [content, setContent] = useState([])
+  let [content, setContent] = useState([{'prompt_fr':'', 'hint_fr':'', 'question_type':''}])
   
   useEffect(() => {
     const bootstrapAsync = async () => {
