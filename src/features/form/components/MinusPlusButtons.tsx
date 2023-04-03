@@ -2,19 +2,21 @@ import { TouchableOpacity, View } from "react-native"
 import { Feather } from '@expo/vector-icons';
 import { styles } from "@styles/styles";
 
-export const MinusPlusButtons = ({target, setTarget}: any) => (
+export const MinusPlusButtons = ({target, setTarget, quantity=1}: any) => (
   <View style={styles.centerRow}>
     <TouchableOpacity 
       onPress={() => {
-        if (parseInt(target) > 0) {
-          setTarget((parseInt(target)-1).toString())
+        if (parseFloat(target)-quantity >= 0) {
+          setTarget((parseFloat(target)-quantity).toString());
+        } else if (parseFloat(target) > 0) {
+          setTarget('0');
         };
       }}
     >
-      <Feather name="minus" size={30} color={parseInt(target) > 0 ? 'limegreen' : 'grey'}/>
+      <Feather name="minus" size={30} color={parseFloat(target) > 0 ? 'limegreen' : 'grey'}/>
     </TouchableOpacity>
     <TouchableOpacity 
-      onPress={() => setTarget((parseInt(target)+1).toString())}
+      onPress={() => setTarget((parseFloat(target)+quantity).toString())}
     >
       <Feather name="plus" size={30} color={'limegreen'}/>
     </TouchableOpacity>
