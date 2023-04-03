@@ -116,8 +116,4 @@ export const styles = StyleSheet.create({
     alignSelf: 'stretch',
     margin: 8,
   },
-
-  flexRow: {
-    flexDirection: 'row',
-  },
 });

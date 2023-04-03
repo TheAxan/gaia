@@ -7,7 +7,7 @@ import { NumberMultipleField } from "@features/form/components/NumberMultipleFie
 
 
 const SubQuestions = ({prompt, hint, questionType}: any) => (
-  <View style={styles.flexRow}>
+  <View style={styles.centerRow}>
     <SubAnswerField questionType={questionType}/>
     <Text>{prompt}</Text>
   </View>
