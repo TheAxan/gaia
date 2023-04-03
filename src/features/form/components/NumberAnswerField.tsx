@@ -1,7 +1,7 @@
 import { View, TextInput } from "react-native";
 import { useState } from "react";
 import { styles } from "@styles/styles";
-import { FullSquareButton } from "@features/form/components/FullSquareButton";
+import { SubmitButton } from "@features/form/components/SubmitButton";
 import { MinusPlusButtons } from "@features/form/components//MinusPlusButtons";
 import { NumberInput } from "@features/form/components//NumberInput";
 
@@ -15,7 +15,7 @@ export const NumberAnswerField = () => {
           <NumberInput field={field} setField={setField}/>
           <MinusPlusButtons target={field} setTarget={setField}/>
         </View>
-        <FullSquareButton onPress={() => ''} text={'SAVE'}/>
+        <SubmitButton onPress={() => ''}/>
       </View>
     );
   };

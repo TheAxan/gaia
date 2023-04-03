@@ -92,7 +92,7 @@ export const styles = StyleSheet.create({
     
   },
 
-  fullSquareButton: {
+  submitButton: {
     backgroundColor: 'limegreen',
     borderRadius: 10,
     padding: 10,
