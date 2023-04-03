@@ -39,6 +39,7 @@ export const MultipleAnswerField = ({childrenIds}: any) => {
   return <FlatList 
     scrollEnabled={false}
     data={content}
+    style={styles.multipleAnswerField}
     renderItem={({item}) => <SubQuestions
       prompt={item['prompt_fr']} 
       hint={item['hint_fr']}

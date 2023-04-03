@@ -116,4 +116,8 @@ export const styles = StyleSheet.create({
     alignSelf: 'stretch',
     margin: 8,
   },
+
+  multipleAnswerField: {
+    alignSelf: 'flex-start',
+  },
 });
