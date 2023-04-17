@@ -1,12 +1,12 @@
-import { View, TextInput } from "react-native";
+import { View } from "react-native";
 import { useState } from "react";
 import { styles } from "@styles/styles";
 import { SubmitButton } from "@features/form/components/SubmitButton";
 import { MinusPlusButtons } from "@features/form/components//MinusPlusButtons";
 import { NumberInput } from "@features/form/components//NumberInput";
+import { postAnswer } from "@features/form/api/answer";
 
-
-export const NumberAnswerField = () => {
+export const NumberAnswerField = (id: number) => {
     const [field, setField] = useState('0');
     
     return (
@@ -15,7 +15,7 @@ export const NumberAnswerField = () => {
           <NumberInput field={field} setField={setField}/>
           <MinusPlusButtons target={field} setTarget={setField}/>
         </View>
-        <SubmitButton onPress={() => ''}/>
+        <SubmitButton onPress={async (id) => await postAnswer(id, field)}/>
       </View>
     );
   };

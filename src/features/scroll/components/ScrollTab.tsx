@@ -21,6 +21,7 @@ export const ScrollTab = () => {
       hint={item['hint_fr']} 
       questionType={item['question_type']}
       children={item['children']}
+      id={item['id']}
     />}
   />
 };
