@@ -4,9 +4,9 @@ import { styles } from '@styles/styles'
 import { AnswerField } from "@features/form/components/AnswerField";
 
 
-type ItemProps = {prompt: string, hint: string, questionType: string, children: object, id: number};
+type props = {prompt: string, hint: string, questionType: string, children: object, id: number};
 
-export const FormItem = ({prompt, hint, questionType, children, id}: ItemProps) => {
+export const FormItem = ({prompt, hint, questionType, children, id}: props) => {
   return (
     <View style={styles.item}>
       <Text style={styles.question}>{prompt}</Text>

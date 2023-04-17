@@ -1,21 +1,24 @@
-import { View, TextInput } from "react-native";
+import { View } from "react-native";
 import { useState } from "react";
 import { styles } from "@styles/styles";
 import { SubmitButton } from "@features/form/components/SubmitButton";
 import { MinusPlusButtons } from "@features/form/components//MinusPlusButtons";
 import { NumberInput } from "@features/form/components//NumberInput";
+import { postAnswer } from "@features/form/api/answer";
 
 
-export const NumberAnswerField = () => {
-    const [field, setField] = useState('0');
-    
+type props = {id: number}
+
+export const NumberAnswerField = ({id}: props) => {
+    const [count, setCount] = useState('0');
+
     return (
       <View style={styles.numberField}>
         <View style={styles.centerRow}>
-          <NumberInput field={field} setField={setField}/>
-          <MinusPlusButtons target={field} setTarget={setField}/>
+          <NumberInput field={count} setField={setCount}/>
+          <MinusPlusButtons target={count} setTarget={setCount}/>
         </View>
-        <SubmitButton onPress={() => ''}/>
+        <SubmitButton onPress={async () => await postAnswer(id, {count})}/>
       </View>
     );
   };

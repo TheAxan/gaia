@@ -5,7 +5,9 @@ import { MinusPlusButtons } from "@features/form/components/MinusPlusButtons";
 import { styles } from "@styles/styles";
 import { NumberInput } from "@features/form/components//NumberInput";
 
-export const NumberMultipleField = () => {
+type props = {id: number}
+
+export const NumberMultipleField = ({id}: props) => {
   const [field, setField] = useState('0');
     
   return (
