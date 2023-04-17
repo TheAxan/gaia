@@ -12,7 +12,6 @@ import { restoreTokenHandler } from '@features/auth/utils/restoreTokenHandler';
 import { StackNavigator } from '@components/StackNavigator';
 import { CustomStatusBar } from '@components/CustomStatusBar';
 import { signOutHandler } from '@features/auth/utils/signOutHandler';
-import { axios } from "@lib/axios";
 
 
 function App() {
@@ -28,12 +27,10 @@ function App() {
   const authContext = useMemo(() => ({
     signIn: async (username: string, password: string) => {
       dispatch({type: 'SIGN_IN', token: await signInHandler(username, password)});
-      axios.defaults.headers.common['Authorization'] = state.userToken;
     },
     signOut: async () => {
       await signOutHandler();
       dispatch({ type: 'SIGN_OUT' });
-      axios.defaults.headers.common['Authorization'] = null;
     },
     signUp: async (username: string, password: string) => {
       dispatch({type: 'SIGN_IN', token: await signUpHandler(username, password)});
