@@ -7,6 +7,7 @@ urlpatterns = [
     path('register/', views.RegisterView.as_view()),
     path('question/<int:id>/', views.QuestionDetail.as_view()),
     path('questions/', views.QuestionList.as_view()),
+    path('questions/valid/', views.ValidQuestionList.as_view()),
     path('answer/', views.AnswerView.as_view())
 ]
 

@@ -28,6 +28,10 @@ class QuestionList(generics.ListAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 
+class ValidQuestionList(generics.ListAPIView):
+    queryset = Question.objects.filter(parent=None)
+    serializer_class = QuestionSerializer
+
 class AnswerView(generics.CreateAPIView):
     serializer_class = AnswerSerializer
     def perform_create(self, serializer):
