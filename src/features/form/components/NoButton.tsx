@@ -3,12 +3,12 @@ import { styles } from "@styles/styles";
 import { Feather } from '@expo/vector-icons';
 
 
-type SubmitButtonProps = {
+type props = {
   onPress: ((event: GestureResponderEvent) => void), 
 };
 
-export const SubmitButton = ({onPress}: SubmitButtonProps) => (
-  <TouchableOpacity onPress={onPress} style={[styles.squareButton, styles.greenButton]}>
-    <Feather name="check" size={20} color={'white'}/>
+export const NoButton = ({onPress}: props) => (
+  <TouchableOpacity onPress={onPress} style={[styles.whiteButton, styles.squareButton]}>
+    <Feather name="x" size={20} color={'limegreen'}/>
   </TouchableOpacity>
 );

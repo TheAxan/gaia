@@ -82,21 +82,20 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
 
-  emptySquareButton: {
-    backgroundColor: 'whitesmoke',
+  squareButton: {
     borderRadius: 10,
+    padding: 10,
+    height: 40,
+  },
+  
+  whiteButton: {
+    backgroundColor: 'whitesmoke',
     borderColor: 'limegreen',
     borderWidth: 1,
-    padding: 10,
-    height: 40,
-    
   },
 
-  submitButton: {
+  greenButton: {
     backgroundColor: 'limegreen',
-    borderRadius: 10,
-    padding: 10,
-    height: 40,
   },
 
   whitePrompt: {
