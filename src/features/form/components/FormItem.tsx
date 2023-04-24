@@ -4,7 +4,13 @@ import { styles } from '@styles/styles'
 import { AnswerField } from "@features/form/components/AnswerField";
 
 
-type props = {prompt: string, hint: string, questionType: string, children: object, id: number};
+type props = {
+  prompt: string,
+  hint: string,
+  questionType: string,
+  children: {[index: number]: number},
+  id: number
+};
 
 export const FormItem = ({prompt, hint, questionType, children, id}: props) => {
   return (

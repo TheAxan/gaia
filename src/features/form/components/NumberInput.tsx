@@ -1,7 +1,10 @@
 import { styles } from "@styles/styles";
 import { TextInput, View } from "react-native";
 
-export const NumberInput = ({field, setField}: any) => (
+
+type props = {field: string, setField: React.Dispatch<React.SetStateAction<string>>}
+
+export const NumberInput = ({field, setField}: props) => (
   <View style={styles.numberInput}>
     <TextInput
       placeholder={''}

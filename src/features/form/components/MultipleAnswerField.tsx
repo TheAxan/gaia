@@ -7,7 +7,10 @@ import { SubQuestions } from "@features/form/components/SubQuestions";
 import { SubmitButton } from "@features/form/components/SubmitButton";
 
 
-export const MultipleAnswerField = ({childrenIds}: any) => {
+
+type props = {childrenIds: {[index: number]: number}, id: number}
+
+export const MultipleAnswerField = ({childrenIds, id}: props) => {
   let [content, setContent] = useState([{'prompt_fr':'', 'id':0, 'question_type':''}])
   
   useEffect(() => {

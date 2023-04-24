@@ -2,7 +2,14 @@ import { TouchableOpacity, View } from "react-native"
 import { Feather } from '@expo/vector-icons';
 import { styles } from "@styles/styles";
 
-export const MinusPlusButtons = ({target, setTarget, quantity=1}: any) => (
+
+type props = {
+  target: string,
+  setTarget: React.Dispatch<React.SetStateAction<string>>,
+  quantity?: number
+}
+
+export const MinusPlusButtons = ({target, setTarget, quantity=1}: props) => (
   <View style={styles.centerRow}>
     <TouchableOpacity 
       onPress={() => {

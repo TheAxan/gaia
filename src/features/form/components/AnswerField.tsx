@@ -5,7 +5,7 @@ import { BinaryAnswerField } from "@features/form/components/BinaryAnswerField";
 import { MultipleAnswerField } from "@features/form/components/MultipleAnswerField";
 
 
-type props = {questionType: string, children: object, id: number}
+type props = {questionType: string, children: {[index: number]: number}, id: number}
 
 export const AnswerField = ({questionType, children, id}: props) => {
   switch (questionType) {
