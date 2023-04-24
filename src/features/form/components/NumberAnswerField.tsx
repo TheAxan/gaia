@@ -18,7 +18,7 @@ export const NumberAnswerField = ({id}: props) => {
           <NumberInput field={count} setField={setCount}/>
           <MinusPlusButtons target={count} setTarget={setCount}/>
         </View>
-        <SubmitButton onPress={async () => await postAnswer(id, {count})}/>
+        <SubmitButton onPress={async () => await postAnswer(id, {float: count})}/>
       </View>
     );
   };
