@@ -117,6 +117,9 @@ export const styles = StyleSheet.create({
   },
 
   multipleAnswerField: {
-    alignSelf: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    alignSelf: 'stretch',
   },
 });

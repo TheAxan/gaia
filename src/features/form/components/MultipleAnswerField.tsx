@@ -1,29 +1,14 @@
 import { useEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 
 import { fetchQuestion } from "@features/form/api/question";
 import { styles } from "@styles/styles";
-import { NumberMultipleField } from "@features/form/components/NumberMultipleField";
+import { SubQuestions } from "@features/form/components/SubQuestions";
+import { SubmitButton } from "@features/form/components/SubmitButton";
 
-
-const SubQuestions = ({prompt, hint, questionType}: any) => (
-  <View style={styles.centerRow}>
-    <SubAnswerField questionType={questionType}/>
-    <Text>{prompt}</Text>
-  </View>
-);
-
-const SubAnswerField = ({prompt, hint, questionType}: any) => {
-  switch (questionType) {
-    case 'number_multiple':
-      return <NumberMultipleField/>
-    default:
-      return <Text>Unhandled question questionType {prompt}</Text>
-  };
-};
 
 export const MultipleAnswerField = ({childrenIds}: any) => {
-  let [content, setContent] = useState([{'prompt_fr':'', 'hint_fr':'', 'question_type':''}])
+  let [content, setContent] = useState([{'prompt_fr':'', 'id':0, 'question_type':''}])
   
   useEffect(() => {
     const bootstrapAsync = async () => {
@@ -36,14 +21,17 @@ export const MultipleAnswerField = ({childrenIds}: any) => {
     bootstrapAsync();    
   }, []);
   
-  return <FlatList 
-    scrollEnabled={false}
-    data={content}
-    style={styles.multipleAnswerField}
-    renderItem={({item}) => <SubQuestions
-      prompt={item['prompt_fr']} 
-      hint={item['hint_fr']}
-      questionType={item['question_type']}
-    />}
-  />
+  return <View style={styles.multipleAnswerField}>
+    <FlatList 
+      scrollEnabled={false}
+      data={content}
+      renderItem={({item}) => <SubQuestions
+        prompt={item['prompt_fr']} 
+        id={item['id']}
+        questionType={item['question_type']}
+        />
+      }
+    />
+  <SubmitButton onPress={() => ''}/>
+  </View>
 };
