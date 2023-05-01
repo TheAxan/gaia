@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
 
-import { Props } from 'src/customTypes/Props';
+import { Props } from "src/customTypes/Props";
 import { styles } from "@styles/styles";
 import { AuthContext } from "@features/auth/contexts/authContext";
 
@@ -14,33 +14,33 @@ export const SignInScreen = ({ navigation }: Props) => {
     <View style={styles.centerContainer}>
       <View style={styles.pillInput}>
         <TextInput
-          placeholder={'Username'}
+          placeholder={"Username"}
           onChangeText={(username) => setUsername(username)}
         />
       </View>
- 
+
       <View style={styles.pillInput}>
         <TextInput
-          placeholder={'Password'}
+          placeholder={"Password"}
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
       </View>
- 
-      <TouchableOpacity onPress={() => navigation.navigate('PasswordReset')}>
+
+      <TouchableOpacity onPress={() => navigation.navigate("PasswordReset")}>
         <Text style={styles.textButton}>Forgot Password?</Text>
       </TouchableOpacity>
-      
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+
+      <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
         <Text style={styles.textButton}>Don't have an account yet?</Text>
       </TouchableOpacity>
- 
+
       <TouchableOpacity
-        style={styles.pillButton} 
+        style={styles.pillButton}
         onPress={() => signIn(usernameInput, passwordInput)}
       >
         <Text>LOGIN</Text>
       </TouchableOpacity>
     </View>
-  )
+  );
 };

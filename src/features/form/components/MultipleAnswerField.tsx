@@ -38,7 +38,6 @@ export const MultipleAnswerField = ({ childrenIds, id }: props) => {
         renderItem={({ item }) => (
           <SubQuestions
             prompt={item["prompt_fr"]}
-            id={item["id"]}
             questionType={item["question_type"]}
           />
         )}

@@ -1,14 +1,13 @@
 import { NumberMultipleField } from "@features/form/components/NumberMultipleField";
 import { Text } from "react-native";
 
+type props = { prompt?: string; questionType: string };
 
-type props = {prompt: string, id: number, questionType: string}
-
-export const SubAnswerField = ({prompt, id, questionType}: props) => {
+export const SubAnswerField = ({ prompt, questionType }: props) => {
   switch (questionType) {
-    case 'number_multiple':
-      return <NumberMultipleField id={id}/>
+    case "number_multiple":
+      return <NumberMultipleField />;
     default:
-      return <Text>Unhandled question questionType {prompt}</Text>
-  };
+      return <Text>Unhandled question questionType {prompt}</Text>;
+  }
 };

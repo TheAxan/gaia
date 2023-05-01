@@ -6,7 +6,7 @@ import { AuthContext } from "@features/auth/contexts/authContext";
 
 export const ProfileTab = () => {
   const { signOut } = useContext(AuthContext);
-  
+
   return (
     <>
       <Text>This is the ProfileTab</Text>

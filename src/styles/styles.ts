@@ -1,12 +1,11 @@
-
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   // alt colors: yellowgreen darkgreen green forestgreen
   appContainer: {
     flex: 1,
-    alignItems: 'stretch',
-    justifyContent: 'space-between',
+    alignItems: "stretch",
+    justifyContent: "space-between",
   },
 
   centerContainer: {
@@ -21,13 +20,13 @@ export const styles = StyleSheet.create({
     width: "70%",
     height: 45,
     margin: 10,
-    padding: 10
+    padding: 10,
   },
-  
+
   textButton: {
     margin: 10,
   },
-  
+
   pillButton: {
     width: "80%",
     borderRadius: 25,
@@ -39,20 +38,19 @@ export const styles = StyleSheet.create({
   },
 
   item: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: "lightgrey",
     padding: 8,
     marginVertical: 8,
     marginHorizontal: 16,
     borderRadius: 10,
     flex: 1,
-    alignItems: 'center',
-    
+    alignItems: "center",
   },
-  
+
   numberInput: {
-    backgroundColor: 'whitesmoke',
+    backgroundColor: "whitesmoke",
     borderRadius: 10,
-    borderColor: 'limegreen',
+    borderColor: "limegreen",
     borderWidth: 1,
     margin: 8,
     padding: 2,
@@ -60,26 +58,26 @@ export const styles = StyleSheet.create({
   },
 
   hint: {
-    color: 'grey',
+    color: "grey",
     textAlign: "justify",
     fontSize: 10,
   },
 
   question: {
     textAlign: "justify",
-    color: 'limegreen',
+    color: "limegreen",
   },
 
   numberField: {
-    flexDirection: 'row',
+    flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: 'center',
-    alignSelf: 'stretch',
+    alignItems: "center",
+    alignSelf: "stretch",
   },
 
   centerRow: {
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: "row",
+    alignItems: "center",
   },
 
   squareButton: {
@@ -87,39 +85,39 @@ export const styles = StyleSheet.create({
     padding: 10,
     height: 40,
   },
-  
+
   whiteButton: {
-    backgroundColor: 'whitesmoke',
-    borderColor: 'limegreen',
+    backgroundColor: "whitesmoke",
+    borderColor: "limegreen",
     borderWidth: 1,
   },
 
   greenButton: {
-    backgroundColor: 'limegreen',
+    backgroundColor: "limegreen",
   },
 
   whitePrompt: {
-    color: 'whitesmoke',
+    color: "whitesmoke",
     fontSize: 16,
   },
 
   limegreenPrompt: {
-    color: 'limegreen',
+    color: "limegreen",
     fontSize: 16,
   },
 
   binaryField: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    alignSelf: 'stretch',
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    alignSelf: "stretch",
     margin: 8,
   },
 
   multipleAnswerField: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-    alignSelf: 'stretch',
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    alignSelf: "stretch",
   },
 });
