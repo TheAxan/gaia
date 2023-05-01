@@ -22,10 +22,9 @@ export const MultipleAnswerField = ({ childrenIds, id }: props) => {
       for (const i in childrenIds) {
         let question = await fetchQuestion(childrenIds[i]);
         output.push(question);
-        dispatch({ type: "ADD", id: question["id"], value: 0 });
+        dispatch({ type: "change", id: question["id"], value: "0" });
       }
       setContent(output);
-      dispatch({ type: "UPDATE", id: 10, value: 1 });
     };
     bootstrapAsync();
   }, []);
@@ -39,10 +38,14 @@ export const MultipleAnswerField = ({ childrenIds, id }: props) => {
           <SubQuestions
             prompt={item["prompt_fr"]}
             questionType={item["question_type"]}
+            field={state[item["id"]]}
+            setField={(value: any) =>
+              dispatch({ type: "change", id: item["id"], value: value })
+            }
           />
         )}
       />
-      <SubmitButton onPress={() => ""} />
+      <SubmitButton onPress={() => console.log(state)} />
     </View>
   );
 };

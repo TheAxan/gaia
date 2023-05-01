@@ -5,9 +5,12 @@ import { MinusPlusButtons } from "@features/form/components/MinusPlusButtons";
 import { styles } from "@styles/styles";
 import { NumberInput } from "@features/form/components//NumberInput";
 
-export const NumberMultipleField = () => {
-  const [field, setField] = useState("0");
+type props = {
+  field: string;
+  setField: React.Dispatch<React.SetStateAction<string>>;
+};
 
+export const NumberMultipleField = ({ field, setField }: props) => {
   return (
     <View style={styles.numberField}>
       <View style={styles.centerRow}>
