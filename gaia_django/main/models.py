@@ -30,7 +30,8 @@ class Question(models.Model):
             ('binary_multiple', 'binary_multiple'),
             ('number', 'number'),
             ('number_multiple', 'number_multiple'),
-            ('multiple', 'multiple')
+            ('multiple_number', 'multiple_number'),
+            ('multiple_binary', 'multiple_binary')
         ]
     )
 
