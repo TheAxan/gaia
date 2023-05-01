@@ -6,6 +6,7 @@ import { styles } from "@styles/styles";
 import { SubQuestions } from "@features/form/components/SubQuestions";
 import { SubmitButton } from "@features/form/components/SubmitButton";
 import { multiAnswerReducer } from "@features/form/hooks/multiAnswerReducer";
+import { postAnswer } from "@features/form/api/answer";
 
 type props = { childrenIds: { [index: number]: number }; id: number };
 
@@ -45,7 +46,13 @@ export const MultipleAnswerField = ({ childrenIds, id }: props) => {
           />
         )}
       />
-      <SubmitButton onPress={() => console.log(state)} />
+      <SubmitButton
+        onPress={() => {
+          for (const id in state) {
+            postAnswer(parseInt(id), { float: state[id] });
+          }
+        }}
+      />
     </View>
   );
 };
