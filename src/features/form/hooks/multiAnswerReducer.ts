@@ -1,19 +1,19 @@
-export const multiAnswerReducer = (answers: any,
-                                   action: { type: string; id: number; value: any }) => {
+export const multiAnswerReducer = (
+  answers: any,
+  action: { type: string; id: number; value: any }
+) => {
   switch (action.type) {
-    case 'UPDATE': {
-      return answers.map((id: number) => {
-        if (id == action.id) {
-          return action.value;
-        } else {
-          return id;
+    case "UPDATE": {
+      for (const id in answers) {
+        if (parseFloat(id) == action.id) {
+          answers[id] = action.value;
         }
-      });
-    };
-  };
-};
-
-export const multiAnswerReducerInitialState = () => {
-  let answer = {}
-  return answer
+      }
+      return answers;
+    }
+    case "ADD": {
+      answers[action.id] = action.value;
+      return answers;
+    }
+  }
 };
