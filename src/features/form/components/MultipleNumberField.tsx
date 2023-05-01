@@ -8,9 +8,9 @@ import { SubmitButton } from "@features/form/components/SubmitButton";
 import { multiAnswerReducer } from "@features/form/hooks/multiAnswerReducer";
 import { postAnswer } from "@features/form/api/answer";
 
-type props = { childrenIds: { [index: number]: number }; id: number };
+type props = { childrenIds: { [index: number]: number } };
 
-export const MultipleAnswerField = ({ childrenIds, id }: props) => {
+export const MultipleNumberField = ({ childrenIds }: props) => {
   let [content, setContent] = useState([
     { prompt_fr: "", id: 0, question_type: "" },
   ]);
@@ -48,8 +48,8 @@ export const MultipleAnswerField = ({ childrenIds, id }: props) => {
       />
       <SubmitButton
         onPress={() => {
-          for (const id in state) {
-            postAnswer(parseInt(id), { float: state[id] });
+          for (const qid in state) {
+            postAnswer(parseInt(qid), { float: state[qid] });
           }
         }}
       />

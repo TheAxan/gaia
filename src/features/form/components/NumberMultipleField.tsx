@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { View } from "react-native";
 
 import { MinusPlusButtons } from "@features/form/components/MinusPlusButtons";

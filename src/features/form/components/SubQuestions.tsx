@@ -6,8 +6,8 @@ import { SubAnswerField } from "@features/form/components/SubAnswerField";
 type props = {
   prompt: string;
   questionType: string;
-  field: string;
-  setField: React.Dispatch<React.SetStateAction<string>>;
+  field?: string;
+  setField?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const SubQuestions = ({
