@@ -22,6 +22,7 @@ export const FormItem = ({
     <View style={styles.item}>
       <Text style={styles.question}>{prompt}</Text>
       <Text style={styles.hint}>{hint}</Text>
+      <Text>test</Text>
       <AnswerField questionType={questionType} children={children} id={id} />
     </View>
   );
