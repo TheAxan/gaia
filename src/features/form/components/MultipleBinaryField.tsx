@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
 
 import { fetchQuestion } from "@features/form/api/question";
 import { styles } from "@styles/styles";
 import { SubQuestions } from "@features/form/components/SubQuestions";
+import { AnswerContext } from "@features/form/context/answerContext";
 
-type props = { childrenIds: { [index: number]: number } };
+type props = { children: { [index: number]: number } };
 
-export const MultipleBinaryField = ({ childrenIds }: props) => {
+export const MultipleBinaryField = () => {
+  const { children } = useContext(AnswerContext);
+
   let [content, setContent] = useState([
     { prompt_fr: "", id: 0, question_type: "" },
   ]);
@@ -15,8 +18,8 @@ export const MultipleBinaryField = ({ childrenIds }: props) => {
   useEffect(() => {
     const bootstrapAsync = async () => {
       let output = [];
-      for (const i in childrenIds) {
-        output.push(await fetchQuestion(childrenIds[i]));
+      for (const i in children) {
+        output.push(await fetchQuestion(children[i]));
       }
       setContent(output);
     };

@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState, useContext } from "react";
 import { FlatList, View } from "react-native";
 
 import { fetchQuestion } from "@features/form/api/question";
@@ -7,10 +7,11 @@ import { SubQuestions } from "@features/form/components/SubQuestions";
 import { SubmitButton } from "@features/form/components/SubmitButton";
 import { multiAnswerReducer } from "@features/form/hooks/multiAnswerReducer";
 import { postAnswer } from "@features/form/api/answer";
+import { AnswerContext } from "@features/form/context/answerContext";
 
-type props = { childrenIds: { [index: number]: number } };
+export const MultipleNumberField = () => {
+  const { children } = useContext(AnswerContext);
 
-export const MultipleNumberField = ({ childrenIds }: props) => {
   let [content, setContent] = useState([
     { prompt_fr: "", id: 0, question_type: "" },
   ]);
@@ -20,8 +21,8 @@ export const MultipleNumberField = ({ childrenIds }: props) => {
   useEffect(() => {
     const bootstrapAsync = async () => {
       let output = [];
-      for (const i in childrenIds) {
-        let question = await fetchQuestion(childrenIds[i]);
+      for (const i in children) {
+        let question = await fetchQuestion(children[i]);
         output.push(question);
         dispatch({ type: "change", id: question["id"], value: "0" });
       }

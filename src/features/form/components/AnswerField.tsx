@@ -1,26 +1,24 @@
 import { Text } from "react-native";
+import { useContext } from "react";
 
 import { NumberAnswerField } from "@features/form/components/NumberAnswerField";
 import { BinaryAnswerField } from "@features/form/components/BinaryAnswerField";
 import { MultipleNumberField } from "@features/form/components/MultipleNumberField";
 import { MultipleBinaryField } from "@features/form/components/MultipleBinaryField";
+import { AnswerContext } from "@features/form/context/answerContext";
 
-type props = {
-  questionType: string;
-  children: { [index: number]: number };
-  id: number;
-};
+export const AnswerField = () => {
+  const { questionType } = useContext(AnswerContext);
 
-export const AnswerField = ({ questionType, children, id }: props) => {
   switch (questionType) {
     case "number":
-      return <NumberAnswerField id={id} />;
+      return <NumberAnswerField />;
     case "binary":
-      return <BinaryAnswerField id={id} />;
+      return <BinaryAnswerField />;
     case "multiple_number":
-      return <MultipleNumberField childrenIds={children} />;
+      return <MultipleNumberField />;
     case "multiple_binary":
-      return <MultipleBinaryField childrenIds={children} />;
+      return <MultipleBinaryField />;
     default:
       return <Text>Unhandled question questionType</Text>;
   }
