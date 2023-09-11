@@ -4,12 +4,10 @@ import { FlatList, View } from "react-native";
 import { fetchQuestion } from "@features/form/api/question";
 import { styles } from "@styles/styles";
 import { SubQuestions } from "@features/form/components/SubQuestions";
-import { AnswerContext } from "@features/form/context/answerContext";
-
-type props = { children: { [index: number]: number } };
+import { FormItemContext } from "@features/form/context/formItemContext";
 
 export const MultipleBinaryField = () => {
-  const { children } = useContext(AnswerContext);
+  const { children } = useContext(FormItemContext);
 
   let [content, setContent] = useState([
     { prompt_fr: "", id: 0, question_type: "" },

@@ -5,10 +5,10 @@ import { NumberAnswerField } from "@features/form/components/NumberAnswerField";
 import { BinaryAnswerField } from "@features/form/components/BinaryAnswerField";
 import { MultipleNumberField } from "@features/form/components/MultipleNumberField";
 import { MultipleBinaryField } from "@features/form/components/MultipleBinaryField";
-import { AnswerContext } from "@features/form/context/answerContext";
+import { FormItemContext } from "@features/form/context/formItemContext";
 
 export const AnswerField = () => {
-  const { questionType } = useContext(AnswerContext);
+  const { questionType } = useContext(FormItemContext);
 
   switch (questionType) {
     case "number":

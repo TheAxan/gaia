@@ -7,10 +7,10 @@ import { SubQuestions } from "@features/form/components/SubQuestions";
 import { SubmitButton } from "@features/form/components/SubmitButton";
 import { multiAnswerReducer } from "@features/form/hooks/multiAnswerReducer";
 import { postAnswer } from "@features/form/api/answer";
-import { AnswerContext } from "@features/form/context/answerContext";
+import { FormItemContext } from "@features/form/context/formItemContext";
 
 export const MultipleNumberField = () => {
-  const { children } = useContext(AnswerContext);
+  const { children } = useContext(FormItemContext);
 
   let [content, setContent] = useState([
     { prompt_fr: "", id: 0, question_type: "" },

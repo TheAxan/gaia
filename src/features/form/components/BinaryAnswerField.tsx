@@ -5,10 +5,10 @@ import { styles } from "@styles/styles";
 import { YesButton } from "@features/form/components/YesButton";
 import { NoButton } from "@features/form/components/NoButton";
 import { postAnswer } from "@features/form/api/answer";
-import { AnswerContext } from "@features/form/context/answerContext";
+import { FormItemContext } from "@features/form/context/formItemContext";
 
 export const BinaryAnswerField = () => {
-  const { id } = useContext(AnswerContext);
+  const { id } = useContext(FormItemContext);
 
   return (
     <View style={styles.binaryField}>
